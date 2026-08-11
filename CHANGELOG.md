@@ -26,6 +26,12 @@ First public release.
 - `tests/` — 116 integrity checks (schema, taal arithmetic, musical sanity, provenance, lossless
   round-trip) run in CI on every push and pull request.
 
+### Notes on determinism
+- `tools/to_musicxml.py` normalises music21's encoding date, version stamp and randomly
+  generated part ids, so every derived file is byte-reproducible from the canonical JSON on any
+  machine. CI asserts this on every push — a diff in `derived/` therefore always means a real
+  change to the data, never a rerun artefact.
+
 ### Notes on sources
 - Witness pages are **not redistributed**; `tools/fetch_sources.py` retrieves them from the cited
   URLs on demand and `sources/raw/` is git-ignored. Rationale in `sources/README.md`.

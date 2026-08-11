@@ -9,7 +9,7 @@
     <creator type="composer">Rabindranath Tagore</creator>
     <encoding>
       <encoding-date>2026-08-11</encoding-date>
-      <software>music21 v.10.5.0</software>
+      <software>tagore-swaralipi tools/to_musicxml.py (via music21)</software>
       <supports element="beam" type="yes" />
       <supports element="stem" type="yes" />
       <supports element="accidental" type="yes" />
@@ -22,12 +22,12 @@
     </scaling>
   </defaults>
   <part-list>
-    <score-part id="P2b0bc030ebccd0e2f086d81f03d0cc3a">
+    <score-part id="P1">
       <part-name />
     </score-part>
   </part-list>
   <!--=========================== Part 1 ===========================-->
-  <part id="P2b0bc030ebccd0e2f086d81f03d0cc3a">
+  <part id="P1">
     <!--========================= Measure 1 ==========================-->
     <measure implicit="no" number="1">
       <attributes>

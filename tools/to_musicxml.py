@@ -6,12 +6,20 @@ Lossy view: Sa mapped to C4, matra = quarter note, taal cycle = time signature
 talamukta -> unmetered, notated in free 4/4 with a text direction).
 Kan notes become grace notes; lyrics attach per note in Bengali.
 """
-import json, glob
+import json, glob, re
 from fractions import Fraction
 from pathlib import Path
 from music21 import stream, note, meter, tempo, metadata, expressions, duration as m21dur
 
 ROOT = Path(__file__).parent.parent
+
+# music21 stamps every file with today's date and its own version number, which
+# would make this output differ on every run and on every machine. The corpus
+# guarantees that derived files are reproducible from the canonical JSON, so those
+# two fields are normalised to fixed values. A real diff then means a real change.
+ENCODING_DATE = "2026-08-11"
+SOFTWARE = "tagore-swaralipi tools/to_musicxml.py (via music21)"
+
 OFFSET = {'S': 0, 'R': 2, 'G': 4, 'M': 5, 'P': 7, 'D': 9, 'N': 11}
 
 def m21_pitch(sw):
@@ -65,6 +73,24 @@ def build(doc):
     sc.append(s)
     return sc
 
+def stabilise(path):
+    """
+    Make music21's output byte-identical across runs and machines.
+
+    Three things vary per run and carry no musical meaning: the encoding date,
+    the music21 version string, and randomly generated part ids. Normalising them
+    is what lets CI assert that every derived file is reproducible from the
+    canonical JSON — so that a diff in derived/ always means a real change.
+    """
+    text = Path(path).read_text(encoding='utf-8')
+    text = re.sub(r'<encoding-date>[^<]*</encoding-date>',
+                  f'<encoding-date>{ENCODING_DATE}</encoding-date>', text)
+    text = re.sub(r'<software>[^<]*</software>', f'<software>{SOFTWARE}</software>', text)
+    for index, part_id in enumerate(dict.fromkeys(re.findall(r'"(P[0-9a-f]{8,})"', text)), start=1):
+        text = text.replace(f'"{part_id}"', f'"P{index}"')
+    Path(path).write_text(text, encoding='utf-8')
+
+
 if __name__ == '__main__':
     outdir = ROOT / 'derived' / 'musicxml'
     outdir.mkdir(parents=True, exist_ok=True)
@@ -73,4 +99,5 @@ if __name__ == '__main__':
         sc = build(doc)
         out = outdir / f"{doc['id']}.musicxml"
         sc.write('musicxml', fp=str(out))
+        stabilise(out)
         print('wrote', out.name)

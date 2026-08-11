@@ -60,8 +60,14 @@ jobs:
         run: |
           if ! git diff --quiet -- data/text derived; then
             echo "::error::Derived files are out of sync with data/songs/."
-            echo "Run: python tools/render_text.py && python tools/to_midi.py && python tools/to_musicxml.py"
+            echo "Regenerate and commit them:"
+            echo "  python tools/render_text.py && python tools/to_midi.py && python tools/to_musicxml.py"
+            echo ""
+            echo "The generators are deterministic (tools/to_musicxml.py normalises music21's"
+            echo "encoding date, version stamp and random part ids), so a diff here means the"
+            echo "canonical data in data/songs/ changed without its derived views being rebuilt."
             git diff --stat -- data/text derived
+            git diff -- data/text derived | head -60
             exit 1
           fi
           echo "Derived files match the canonical data."
