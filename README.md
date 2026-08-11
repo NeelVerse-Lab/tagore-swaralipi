@@ -32,6 +32,7 @@ Rabindranath Tagore left behind roughly 2,200 songs, and — almost uniquely amo
 | `examples/` | Runnable exploration script — five questions answered over the corpus, no dependencies |
 | `experiment/` | **"Claude continues Tagore"** — a blind composition experiment with A/B audio ([writeup](experiment/EXPERIMENT.md)) |
 | `index.html` | The [listening page](https://neelverse-lab.github.io/tagore-swaralipi/) — notation beside audio, built by `tools/build_site.py` |
+| `method.html` | The [interactive methodology walkthrough](https://neelverse-lab.github.io/tagore-swaralipi/method.html) — decoder, pipeline, notation follower, blind listening test. Generated from the corpus by `tools/build_method_page.py` |
 | `tests/` | 126 integrity checks — schema, taal arithmetic, provenance, lossless round-trip. Run in CI on every PR |
 
 ## The ten songs
@@ -62,6 +63,13 @@ And for the machine-learning era there is a sharper reason: **models learn the g
 
 **🎧 [Open the listening page](https://neelverse-lab.github.io/tagore-swaralipi/)** — all ten songs with players, each next to the swaralipi
 the audio is made from, plus the AI experiment side by side.
+
+**🛠 [How it was made — interactive walkthrough](https://neelverse-lab.github.io/tagore-swaralipi/method.html)** —
+the source, the token decoding (click any token to see what it means and how we know), the
+five-stage pipeline, the verification against printed Swarabitan, and the experiment as a blind
+listening test. Its centrepiece is a **notation follower**: press play and the current matra lights
+up while the taal cycle turns beneath it — sam, taali, khali — so you can watch the rhythm being
+counted instead of taking it on faith.
 
 Nothing in `audio/` is a recording. Each file was generated from the JSON in `data/songs/`, so it
 is a direct audible test of the digitization: if a song sounds right, the data is right, and if a
@@ -128,6 +136,7 @@ python tools/to_midi.py          # -> derived/midi
 python tools/to_musicxml.py      # -> derived/musicxml
 python tools/synth.py            # -> audio (needs ffmpeg)
 python tools/build_site.py       # -> index.html (listening page)
+python tools/build_method_page.py # -> method.html (interactive walkthrough)
 python -m pytest tests/ -v       # 126 integrity checks
 ```
 

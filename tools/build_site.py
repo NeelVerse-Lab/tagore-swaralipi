@@ -131,6 +131,9 @@ def build():
   notation. <strong>Nothing on this page is a recording.</strong> Every note you hear was
   synthesized directly from the data — so if a song sounds right, the digitization is right,
   and if a phrase sounds wrong, you have found a bug worth reporting.</p>
+  <p class="lede"><a href="method.html"><strong>How it was made →</strong></a> an interactive
+  walkthrough: the source, the decoding, the pipeline, the verification, and the experiment —
+  with the notation following the audio as it plays.</p>
   <p class="lede"><a href="{REPO}">Repository</a> ·
   <a href="{REPO}/blob/main/docs/VERIFICATION.md">Verification record</a> ·
   <a href="{REPO}/blob/main/CONTRIBUTING.md">How to contribute</a></p>
