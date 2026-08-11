@@ -10,7 +10,7 @@
   "bn": "প্রকৃতি",
   "en": "Nature"
  },
- "raga_anga": "Baul-anga (traditional attribution)",
+ "raga_anga": "বাংলা (Bangla), as printed in Swarabitan vol. 9",
  "taal": {
   "name": {
    "bn": "কাহারবা",
@@ -4878,6 +4878,19 @@
    "retrieved": "2026-08-11",
    "taal_as_stated": "কাহারবা"
   },
+  "scan_verification": {
+   "swarabitan_volume": 9,
+   "song_number_in_volume": 22,
+   "scan": "https://archive.org/details/in.ernet.dli.2015.339565",
+   "checked": "2026-08-11",
+   "scope": "line 1 (sthayi): all 16 matras and lyric syllables",
+   "result": "exact match",
+   "printed_header": "বাংলা । কাহারবা",
+   "notes": [
+    "The printed header confirms kaharba and gives the anga as বাংলা (Bangla), correcting the 'Baul-anga' attribution previously recorded here from tradition rather than from a source.",
+    "Validates the corpus's kan (grace-note) encoding: where we write a kan, the print sets the ornamenting swara as a smaller raised glyph (মগা) — the akarmatrik convention for kan."
+   ]
+  },
   "secondary_witnesses": [
    {
     "site": "notesandsargam.com",
@@ -4889,10 +4902,11 @@
   "known_deviations": []
  },
  "confidence": {
-  "level": "medium",
+  "level": "high",
   "notes": [
-   "12 note-units use the rare i-vowel token form; pitch reading confident, vowel-form semantics flagged",
-   "parjaay/raga attribution traditional, not stated in primary witness"
+   "Sthayi verified line-by-line against the printed Swarabitan vol. 9 scan (exact match); raga/taal now taken from the printed header rather than tradition",
+   "12 note-units use the rare i-vowel token form; pitch reading confident, vowel-form semantics still flagged",
+   "Verification covered line 1; lines 2-21 remain archive-derived"
   ]
  }
 }

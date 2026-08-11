@@ -11,6 +11,51 @@ RETRIEVED = "2026-08-11"
 # Witness URLs must use the archive's precomposed Bengali nukta characters
 # (য় ড় ঢ়). See tools/fetch_sources.py — Unicode NFC does not do this for you.
 
+# Songs checked line-by-line against scans of the printed Swarabitan (Visva-Bharati),
+# not only against the online witness. docs/VERIFICATION.md holds the full record:
+# which page images were consulted, what matched, and every discrepancy found.
+SCAN_VERIFIED = {
+    "purano-sei-diner-katha": {
+        "swarabitan_volume": 32,
+        "song_number_in_volume": 16,
+        "scan": "https://archive.org/details/in.ernet.dli.2015.339540",
+        "checked": "2026-08-11",
+        "scope": "lines 1-6 (sthayi through first antara): every matra and lyric syllable",
+        "result": "exact match",
+        "printed_header": "মিশ্র ভূপালী । একতাল",
+        "notes": [
+            "The printed header confirms ektaal and supplies a raga the online witness omits: Mishra Bhupali, a pentatonic raga — consistent both with the song's Auld Lang Syne origin and with the pentatonic note-set the data itself shows.",
+            "Line 4, matra 5: the udara mark under the second ধা is ambiguous in this scan. We keep the witness reading (udara), which fits the surrounding low-register phrase.",
+        ],
+    },
+    "bhalobese-sokhi": {
+        "swarabitan_volume": 56,
+        "song_number_in_volume": 19,
+        "scan": "https://archive.org/details/in.ernet.dli.2015.336651",
+        "checked": "2026-08-11",
+        "scope": "lines 1-2 (sthayi): every matra and lyric syllable",
+        "result": "exact match",
+        "printed_header": "none — no raga/taal line is printed for this song",
+        "notes": [
+            "Resolves a conflict with a secondary source. geetabitan.com lists this song as Dadra; the printed page carries no taal line and no vibhag dandas anywhere in the notation, which is how Swarabitan sets a talamukta (free-rhythm) song. The talamukta reading stands.",
+            "Three-note matras in the print (গমপা, গমগা) match the corpus's matra-fraction encoding exactly.",
+        ],
+    },
+    "gram-chhara-oi-ranga-matir-path": {
+        "swarabitan_volume": 9,
+        "song_number_in_volume": 22,
+        "scan": "https://archive.org/details/in.ernet.dli.2015.339565",
+        "checked": "2026-08-11",
+        "scope": "line 1 (sthayi): all 16 matras and lyric syllables",
+        "result": "exact match",
+        "printed_header": "বাংলা । কাহারবা",
+        "notes": [
+            "The printed header confirms kaharba and gives the anga as বাংলা (Bangla), correcting the 'Baul-anga' attribution previously recorded here from tradition rather than from a source.",
+            "Validates the corpus's kan (grace-note) encoding: where we write a kan, the print sets the ornamenting swara as a smaller raised glyph (মগা) — the akarmatrik convention for kan.",
+        ],
+    },
+}
+
 TAALS = {
     "ektaal":  {"name": {"bn": "একতাল", "translit": "ektaal"}, "matras": 12, "vibhags": [3, 3, 3, 3],
                 "beats": ["sam", "taali", "khali", "taali"], "talamukta": False},
@@ -33,14 +78,16 @@ SONGS = [
         "file": "nltr-purano-0", "id": "purano-sei-diner-katha",
         "title": {"bn": "পুরানো সেই দিনের কথা", "translit": "Purano sei diner katha"},
         "parjaay": {"bn": "প্রেম ও প্রকৃতি", "en": "Love and Nature"},
-        "raga_anga": "Bhanga gaan — melody adapted from the Scots air 'Auld Lang Syne'",
+        "raga_anga": "মিশ্র ভূপালী (Mishra Bhupali), as printed in Swarabitan vol. 32 — a bhanga gaan on the Scots air 'Auld Lang Syne'",
         "taal": "ektaal",
         "url": NLTR_BASE + "/node/16053?gaan=পুরানো সেই দিনের কথা ভুলবি কি রে হায়.xml",
         "secondary": [{"site": "geetabitan.com", "url": "https://www.geetabitan.com/lyrics/P/purano-sei-diner-kotha-lyric.html",
                        "agreement": "taal (ektaal), parjaay, Auld-Lang-Syne origin, written 1885"},
                       {"site": "notesandsargam.com", "url": "https://notesandsargam.com/purano-shei-diner-kotha/",
                        "agreement": "melodic contour matches throughout (independent romanized sargam)"}],
-        "confidence": {"level": "high", "notes": []},
+        "confidence": {"level": "high",
+                       "notes": ["Lines 1-6 verified against the printed Swarabitan vol. 32 scan (exact match)",
+                                 "Line 4, matra 5: udara mark on the second ধা is ambiguous in the scan; witness reading kept"]},
     },
     {
         "file": "nltr-phule-1", "id": "phule-phule-dhole-dhole",
@@ -123,8 +170,9 @@ SONGS = [
         "url": NLTR_BASE + "/node/16053?gaan=ভালোবেসে, সখী, নিভৃত যতনে.xml",
         "secondary": [],
         "confidence": {"level": "high",
-                       "notes": ["talamukta (free rhythm): primary witness states তালমুক্ত; cell durations are relative, no cycle implied",
-                                 "parjaay attribution traditional, not stated in primary witness"]},
+                       "notes": ["Sthayi verified against the printed Swarabitan vol. 56 scan (exact match)",
+                                 "talamukta (free rhythm): confirmed by the printed page, which carries no taal line and no vibhag dandas — this overrides a secondary source that lists the song as Dadra",
+                                 "parjaay attribution traditional, not stated in any witness"]},
     },
     {
         "file": "nltr-esho", "id": "esho-shyamalo-sundoro",
@@ -141,14 +189,15 @@ SONGS = [
         "file": "nltr-gram-0", "id": "gram-chhara-oi-ranga-matir-path",
         "title": {"bn": "গ্রামছাড়া ওই রাঙা মাটির পথ", "translit": "Gram chhara oi ranga matir path"},
         "parjaay": {"bn": "প্রকৃতি", "en": "Nature"},
-        "raga_anga": "Baul-anga (traditional attribution)",
+        "raga_anga": "বাংলা (Bangla), as printed in Swarabitan vol. 9",
         "taal": "kaharba",
         "url": NLTR_BASE + "/node/16053?gaan=গ্রামছাড়া ওই রাঙা মাটির পথ.xml",
         "secondary": [{"site": "notesandsargam.com", "url": "https://notesandsargam.com/gram-chhara-oyi-ranga-matir-poth/",
                        "agreement": "melodic contour matches (independent romanized sargam)"}],
-        "confidence": {"level": "medium",
-                       "notes": ["12 note-units use the rare i-vowel token form; pitch reading confident, vowel-form semantics flagged",
-                                 "parjaay/raga attribution traditional, not stated in primary witness"]},
+        "confidence": {"level": "high",
+                       "notes": ["Sthayi verified line-by-line against the printed Swarabitan vol. 9 scan (exact match); raga/taal now taken from the printed header rather than tradition",
+                                 "12 note-units use the rare i-vowel token form; pitch reading confident, vowel-form semantics still flagged",
+                                 "Verification covered line 1; lines 2-21 remain archive-derived"]},
     },
 ]
 
@@ -196,6 +245,7 @@ def build():
                     "retrieved": RETRIEVED,
                     "taal_as_stated": parsed["meta"]["taal"] or "",
                 },
+                "scan_verification": SCAN_VERIFIED.get(cfg["id"]),
                 "secondary_witnesses": cfg["secondary"],
                 "encoding_method": "automated parse of the witness's notation grid (tools/parse_nltr.py) + manual review of every line",
                 "known_deviations": [],

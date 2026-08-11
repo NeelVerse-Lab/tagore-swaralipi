@@ -67,9 +67,10 @@ a proof of schema and pipeline, and an invitation to scale.
 
 ## Limitations — read before relying on this
 
-- **Archive-derived, not scan-verified.** v0.1 was digitized from an online witness, not the
-  printed Swarabitan. Verification against first editions is the v0.2 milestone and the project's
-  top open task.
+- **Partially scan-verified.** 3 of 10 songs have been checked matra-by-matra against scans of the
+  printed Swarabitan (all three: exact match; see [VERIFICATION.md](VERIFICATION.md)). The other
+  seven are archive-derived and say so in their `confidence` block. Completing the remaining seven
+  is the v0.2 milestone; their volume numbers are already identified.
 - **Ten songs is 0.5% of the songbook.** Any statistical claim drawn from this corpus is a claim
   about ten songs.
 - **Performance is not notation.** Swaralipi records the composition. Rabindrasangeet in

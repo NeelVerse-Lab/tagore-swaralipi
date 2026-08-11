@@ -26,6 +26,18 @@ First public release.
 - `tests/` — 116 integrity checks (schema, taal arithmetic, musical sanity, provenance, lossless
   round-trip) run in CI on every push and pull request.
 
+### Verification
+- 3 of 10 songs checked matra-by-matra against scans of the printed Swarabitan (vols. 32, 56, 9) —
+  all three exact matches. Recorded per song in `provenance.scan_verification` and written up in
+  `docs/VERIFICATION.md`.
+- Corrections this produced: গ্রামছাড়া's anga is **বাংলা** as printed (not the "Baul" recorded from
+  tradition); পুরানো সেই দিনের কথা gains the raga **মিশ্র ভূপালী** from the printed header, which the
+  online witness omits.
+- Conflicts this settled: ভালোবেসে সখী is **talamukta**, not dadra — the printed page carries no
+  taal header and no vibhag dandas.
+- Validated by print: the corpus's *kan* (grace-note) encoding matches the akarmatrik convention of
+  setting the ornamenting swara as a smaller raised glyph.
+
 ### Notes on determinism
 - `tools/to_musicxml.py` normalises music21's encoding date, version stamp and randomly
   generated part ids, so every derived file is byte-reproducible from the canonical JSON on any

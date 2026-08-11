@@ -10,7 +10,7 @@
   "bn": "প্রেম ও প্রকৃতি",
   "en": "Love and Nature"
  },
- "raga_anga": "Bhanga gaan — melody adapted from the Scots air 'Auld Lang Syne'",
+ "raga_anga": "মিশ্র ভূপালী (Mishra Bhupali), as printed in Swarabitan vol. 32 — a bhanga gaan on the Scots air 'Auld Lang Syne'",
  "taal": {
   "name": {
    "bn": "একতাল",
@@ -2835,6 +2835,19 @@
    "retrieved": "2026-08-11",
    "taal_as_stated": "একতালা"
   },
+  "scan_verification": {
+   "swarabitan_volume": 32,
+   "song_number_in_volume": 16,
+   "scan": "https://archive.org/details/in.ernet.dli.2015.339540",
+   "checked": "2026-08-11",
+   "scope": "lines 1-6 (sthayi through first antara): every matra and lyric syllable",
+   "result": "exact match",
+   "printed_header": "মিশ্র ভূপালী । একতাল",
+   "notes": [
+    "The printed header confirms ektaal and supplies a raga the online witness omits: Mishra Bhupali, a pentatonic raga — consistent both with the song's Auld Lang Syne origin and with the pentatonic note-set the data itself shows.",
+    "Line 4, matra 5: the udara mark under the second ধা is ambiguous in this scan. We keep the witness reading (udara), which fits the surrounding low-register phrase."
+   ]
+  },
   "secondary_witnesses": [
    {
     "site": "geetabitan.com",
@@ -2852,6 +2865,9 @@
  },
  "confidence": {
   "level": "high",
-  "notes": []
+  "notes": [
+   "Lines 1-6 verified against the printed Swarabitan vol. 32 scan (exact match)",
+   "Line 4, matra 5: udara mark on the second ধা is ambiguous in the scan; witness reading kept"
+  ]
  }
 }

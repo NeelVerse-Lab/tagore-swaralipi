@@ -181,6 +181,31 @@ def test_confidence_is_declared(song_file):
         )
 
 
+@pytest.mark.parametrize("song_file", SONG_FILES, ids=SONG_IDS)
+def test_scan_verification_is_evidenced(song_file):
+    """
+    A song may only claim to have been checked against the printed Swarabitan if it
+    says which volume, which scan, when, how much was checked, and what came out.
+    An unevidenced verification claim is worse than none.
+    """
+    record = load(song_file)["provenance"].get("scan_verification")
+    if record is None:
+        return
+    assert isinstance(record["swarabitan_volume"], int)
+    assert record["scan"].startswith("http")
+    assert len(record["checked"]) == 10
+    assert record["scope"].strip()
+    assert record["result"] in {"exact match", "match with noted differences", "differences found"}
+    if record["result"] != "exact match":
+        assert record.get("notes"), "a non-exact result must say what differed"
+
+
+def test_corpus_reports_its_verification_state(songs):
+    """The README claims a specific number of scan-verified songs; keep that honest."""
+    verified = [s["id"] for s in songs.values() if s["provenance"].get("scan_verification")]
+    assert len(verified) >= 3, verified
+
+
 # --------------------------------------------------------------------------
 # Round-trip — the guarantee that makes human editing safe
 # --------------------------------------------------------------------------
