@@ -55,6 +55,115 @@ S   S   -/N,  |  S   G   -  |  R   S   -   |  R  G   -
 That's the whole notation. If something in the data can't be expressed in it, that's a schema
 bug and we want to hear about it.
 
+
+---
+
+## Walkthrough: what verifying a song actually looks like
+
+This is the real sequence, start to finish, for the task we most need. It took about forty
+minutes per song the first time and under twenty after that. **No programming is involved** —
+step 2 is two commands you can copy, and everything else is looking and comparing.
+
+### Step 1 — pick a song and find its volume
+
+[`docs/VERIFICATION.md`](docs/VERIFICATION.md) lists the seven unverified songs with their
+Swarabitan volume and archive.org identifier. Say you pick **তুমি রবে নীরবে** — volume 10,
+identifier `in.ernet.dli.2015.339517`.
+
+### Step 2 — get the scan and find the page
+
+The scans are free, no login. In a terminal:
+
+```bash
+# download the volume
+curl -L -o vol10.pdf \
+  https://archive.org/download/in.ernet.dli.2015.339517/2015.339517.Ed2.pdf
+
+# the archive's Bengali OCR is good enough to LOCATE the song
+# (not to read the notation — you'll do that with your eyes)
+curl -L https://archive.org/download/in.ernet.dli.2015.339517/2015.339517.Ed2_djvu.txt \
+  | grep -n "তুমি রবে"
+```
+
+Prefer not to use a terminal? Open
+`https://archive.org/details/in.ernet.dli.2015.339517` and page through the reader. Songs are
+numbered, and each begins with a page carrying the song number, a `রাগ । তাল` line, and the
+lyrics — the notation follows underneath.
+
+### Step 3 — read the page beside our text
+
+Open [`data/text/তুমি-রবে-নীরবে`](data/text) — sorry, `data/text/tumi-robe-nirobe.txt` — next to
+the scan. Our format maps one-to-one onto the printed grid:
+
+| On the printed page | In our text |
+|---|---|
+| সা গা মা | `S G M` |
+| ধা with a dot/hasanta below | `D,` (udara — lower octave) |
+| সা with the mark above | `S'` (tara — upper octave) |
+| `-া` (the akarmatrik dash) | `-` |
+| গমপা — three swaras in one column | `G/M/P` |
+| a small **raised** swara before a normal one | `(G)M` — that's a kan |
+| `।` between groups | `\|` |
+| `৹` under a syllable | `৹` — the syllable is still sounding |
+
+Go matra by matra. Most lines will match. Where one doesn't, you've found the thing we're
+looking for.
+
+### Step 4 — write down what you found
+
+Open a [notation correction issue](../../issues/new?template=notation-correction.yml). Say which
+song, which line, what we have, what the book has, and which volume and page you read. **Say how
+sure you are** — "certain, I'm looking at the page" and "worth checking, something seems off" are
+both useful, and the second one is not a lesser contribution.
+
+**If everything matched, tell us that too.** A song confirmed correct is exactly as valuable as a
+song corrected — it moves that song from "archive-derived" to "verified" and that's the whole
+point of v0.2. Most of this work will be confirmations, and each one is a real result.
+
+### What happens next
+
+The maintainer updates the song's `provenance.scan_verification` block and its `confidence`, and
+credits you by name in the data unless you asked otherwise. The tests re-run, and if a melody
+changed, the derived MIDI, MusicXML and audio are regenerated so everything stays in sync.
+
+---
+
+## Walkthrough: fixing a wrong note yourself
+
+If you're comfortable with a text editor and a terminal, you can go further than reporting.
+
+```bash
+git clone https://github.com/NeelVerse-Lab/tagore-swaralipi.git
+cd tagore-swaralipi
+pip install -r requirements.txt
+python -m pytest tests/ -q        # should be all green before you touch anything
+```
+
+The canonical data is `data/songs/<song>.json`. Find the line and cell — the JSON mirrors the
+printed grid, so line 4, matra 5 is `lines[3].cells[4]`. A cell looks like:
+
+```json
+{ "units": [ { "type": "swara", "swara": { "degree": "D", "saptak": -1 } } ],
+  "lyric": "ভো", "melisma": false }
+```
+
+Change what's wrong. Then regenerate everything downstream and check yourself:
+
+```bash
+python tools/render_text.py     # rebuild the human-readable text
+python tools/to_midi.py         # rebuild MIDI
+python tools/to_musicxml.py     # rebuild MusicXML
+python tools/synth.py <song-id> # re-render the audio — then LISTEN to it
+python -m pytest tests/ -q      # must still be green
+```
+
+**Listening is not optional.** The audio is synthesized from the data, so it is the fastest test
+of whether an edit was right. A wrong note is usually obvious to anyone who knows the song.
+
+Then open a pull request. Put your source in it — volume and page — because a correction without
+a source can't be merged, however confident it sounds. The checklist in the PR template covers
+the rest.
+
 ---
 
 ## 2. Add a song
@@ -89,7 +198,9 @@ The pipeline lives in [`tools/`](tools) and is plain Python with three dependenc
   [SwaralipiXML](https://indic-music.github.io/swaralipixml.html), ABC, LilyPond, or Humdrum
   `**kern` so this data reaches existing musicology toolchains.
 - **Analysis notebooks** — phrase mining, taal-cadence statistics, comparing Tagore's bhanga
-  gaan against their Scottish/Hindustani sources. This is what the dataset exists for.
+  gaan against their Scottish/Hindustani sources. [`examples/explore.py`](examples/explore.py) is
+  a starting point, and [`docs/USE_CASES.md`](docs/USE_CASES.md) lists open questions worth
+  attacking. This is what the dataset exists for.
 
 ### Development setup
 
@@ -153,6 +264,9 @@ code — the format is meant to outlive any one contributor's use case.
 Contributors are listed in the repository's contributor graph, and anyone whose correction changes
 the data is named in that song's `provenance.corrections` block — permanently, in the data itself.
 If you'd rather stay anonymous, just say so in the issue.
+
+See [`ROADMAP.md`](ROADMAP.md) for what's planned and which items are marked **help wanted** —
+several are claimable without asking anyone first.
 
 Questions? Open a [discussion](../../discussions) or an issue. Bengali, Hindi, and English are all
 welcome — write in whichever you think in.

@@ -108,6 +108,7 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
 def build():
     docs = [json.load(open(f, encoding="utf-8"))
             for f in sorted(glob.glob(str(ROOT / "data" / "songs" / "*.json")))]
+    jsonld = (ROOT / "dataset.jsonld").read_text(encoding="utf-8")
     verified = sum(1 for d in docs if d["provenance"].get("scan_verification"))
     cards = "\n".join(song_card(d) for d in docs)
 
@@ -119,6 +120,7 @@ def build():
 <title>Ten Songs of Tagore, In Data — listen</title>
 <meta name="description" content="Ten Rabindrasangeet digitized from akarmatrik swaralipi into open symbolic notation. Every recording here is synthesized from the notation itself.">
 <style>{CSS}</style>
+<script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
 <div class="wrap">
@@ -159,8 +161,8 @@ clips below — the only difference is the composition.</p>
   </div>
 </div>
 
-<blockquote>The model broke no rules: exact 12-matra ektaal cycles, a strictly pentatonic
-note-set, a cadence properly prepared to fall back into the sthayi. Then it did what nearly
+<blockquote>The model broke no rules: exact 12-matra ektaal cycles, a note-set that stayed
+inside the song's pentatonic frame, a cadence properly prepared to fall back into the sthayi. Then it did what nearly
 every Hindustani antara does — it leapt to the upper octave. Tagore didn't. He stays in the
 middle register and saves the one climb for three words: <em>প্রাণের মাঝে আয়</em> — come into
 my heart. The music rises where the poem rises, not where the rulebook says.</blockquote>

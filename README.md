@@ -27,6 +27,9 @@ Rabindranath Tagore left behind roughly 2,200 songs, and — almost uniquely amo
 | `docs/DECODING.md` | How the source archive's font-encoded notation was decoded, with the cross-source triangulation evidence |
 | `docs/DATASET_CARD.md` | Formal dataset card — coverage, intended uses, limitations, rights, prior art |
 | `docs/VERIFICATION.md` | What was checked against the printed Swarabitan, what matched, and what it corrected |
+| `docs/USE_CASES.md` | What this data makes possible — with real findings from the ten songs, and open research questions |
+| `ROADMAP.md` | What v0.2 / v0.3 / v0.5 / v1.0 contain, what's **help wanted**, and what we've decided *not* to do |
+| `examples/` | Runnable exploration script — five questions answered over the corpus, no dependencies |
 | `experiment/` | **"Claude continues Tagore"** — a blind composition experiment with A/B audio ([writeup](experiment/EXPERIMENT.md)) |
 | `index.html` | The [listening page](https://neelverse-lab.github.io/tagore-swaralipi/) — notation beside audio, built by `tools/build_site.py` |
 | `tests/` | 126 integrity checks — schema, taal arithmetic, provenance, lossless round-trip. Run in CI on every PR |
@@ -86,6 +89,26 @@ Same sthayi, same synthesizer, same tonic. The only difference is who wrote the 
 Could you pick which is his? The [writeup](experiment/EXPERIMENT.md) explains what the model got
 right — and the one thing it got conventionally, where Tagore did not.
 
+
+## What you can do with it
+
+Once notation is data, questions that needed sixty volumes and a lifetime become a few lines of
+Python. Run [`examples/explore.py`](examples/explore.py) — no dependencies, ten seconds — and it
+will tell you, among other things, that **Pa sits on sam nearly twice as often as Sa** across this
+corpus, that a handful of four-note interval shapes recur in 8–9 of the ten songs, and that
+melisma density ranges from 15% to 53% of matras between songs.
+
+Those are hints on ten songs. On five hundred they would be findings. The gap between those two
+sentences is what this project is for.
+
+[`docs/USE_CASES.md`](docs/USE_CASES.md) lays out the rest: comparative analysis of Tagore's
+*bhanga gaan* against the Scottish and Hindustani tunes he reworked; whether individual notators
+have detectable fingerprints; search that cannot exist today ("songs in dadra that use kori Ma");
+practice tools at any tonic; Braille and screen-reader output for blind musicians; and the idea I
+would most like someone to take — turning the continuation experiment into a **benchmark that
+distinguishes following the rules from understanding the idiom**, which this repertoire is
+unusually well suited to supply.
+
 ## Provenance and licensing — read this before reusing
 
 - **Compositions**: Rabindranath Tagore (d. 1941). His works entered the Indian public domain on 1 January 2002; the government explicitly declined to extend Visva-Bharati's term in 2001.
@@ -117,9 +140,11 @@ in [`docs/VERIFICATION.md`](docs/VERIFICATION.md) with the volume, page and scan
 you can repeat it rather than trust it. What it produced:
 
 - **পুরানো সেই দিনের কথা** (vol. 32) — exact match over six lines, *and* the printed header gave us
-  a raga the online witness omits: **Mishra Bhupali**, a pentatonic raga. That independently
-  corroborates both the song's *Auld Lang Syne* origin and our decoding, since the note-set in our
-  data came out pentatonic without us ever assuming it.
+  a raga the online witness omits: **মিশ্র ভূপালী (Mishra Bhupali)**. Measure the data and the name
+  turns out to be exact: **94.1% of the song's 135 notes are the Bhupali pentatonic** (S R G P D);
+  the remaining 6% is seven Ni — mostly a lower neighbour to Sa — and a single Ma. *Mishra* means
+  *mixed*, and that is precisely what the numbers show. We computed this before the raga name
+  reached us, so it is corroboration of the decoding rather than an assumption baked into it.
 - **ভালোবেসে সখী** (vol. 56) — exact match, and it **settled a conflict between sources**. A
   secondary source lists this song as dadra; the printed page has no taal header and no vibhag
   bars anywhere, which is how Swarabitan sets a *talamukta* song. Our talamukta reading stands,
@@ -147,13 +172,23 @@ and English are all welcome in issues and discussions.
 
 ## The experiment
 
-We gave a frontier LLM (Claude Fable 5) the nine other songs plus only the sthayi of *Purano sei diner katha*, and asked it to compose the antara — melody for Tagore's actual lyrics, in ektaal, in the song's idiom. It returned a continuation with **zero grammar violations** (12-matra cycles exact, strictly pentatonic note-set, a properly prepared cadence back to the sthayi) — and one deeply revealing *stylistic* divergence from what Tagore actually wrote. The full method, the A/B audio, and what it says about convention versus genius: [`experiment/EXPERIMENT.md`](experiment/EXPERIMENT.md).
+We gave a frontier LLM (Claude Fable 5) the nine other songs plus only the sthayi of *Purano sei diner katha*, and asked it to compose the antara — melody for Tagore's actual lyrics, in ektaal, in the song's idiom. It returned a continuation with **zero grammar violations** (12-matra cycles exact, note-set inside the song's pentatonic frame, a properly prepared cadence back to the sthayi) — and one deeply revealing *stylistic* divergence from what Tagore actually wrote. The full method, the A/B audio, and what it says about convention versus genius: [`experiment/EXPERIMENT.md`](experiment/EXPERIMENT.md).
 
 ## Roadmap
 
-- **v0.2** — Swarabitan scan verification; the three reserve songs (আলো আমার আলো, ক্লান্তি আমার, আমার পরান যাহা চায়); meend arcs as first-class spans
-- **v0.5** — 50 songs across all six parjaays; contributor guide for notation-literate volunteers
-- **v1.0** — the full Swarabitan, if the community wants it as much as we do
+**v0.2** finishes what this release started: verify the remaining seven songs against the printed
+Swarabitan, add the second setting of মাঝে মাঝে তব দেখা পাই, decode the 22 unresolved source
+tokens, and mint a DOI. **v0.3** makes the notation legible again — an akarmatrik renderer that
+prints proper Bengali notation from the JSON, meend as first-class spans, Bengali-language docs.
+**v0.5** takes it to fifty songs across all six parjaays, with a tooling workflow that makes
+verification cheap. **v1.0** is not a song count; it's the point where the format is stable and the
+project no longer depends on any one person.
+
+The guiding rule is that **the corpus grows only as fast as it can be verified** — a hundred
+unchecked songs would be worth less than the ten we have.
+
+[`ROADMAP.md`](ROADMAP.md) has the detail, including which items are **help wanted**, the open
+questions we can't yet answer, and what we've deliberately decided *not* to build.
 
 ---
 

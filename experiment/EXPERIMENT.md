@@ -16,7 +16,7 @@
 | Check | Result |
 |---|---|
 | 4 lines × 12 matras, vibhags [3,3,3,3] | ✅ exact |
-| Note-set within the song's idiom (S R G P D + octaves; N, as ornament) | ✅ zero violations — strictly pentatonic, komal/kori-free |
+| Note-set within the song's idiom (S R G P D + octaves; N, as ornament) | ✅ zero violations — stayed inside the song's pentatonic frame, komal/kori-free |
 | Lyric setting: syllable-per-matra with melismas at line-ends | ✅ parses cell-for-cell |
 | Cadence prepares return to sthayi | ✅ settles G–R → S with an (N,) grace — the sthayi's own lower-neighbour figure, mirrored |
 

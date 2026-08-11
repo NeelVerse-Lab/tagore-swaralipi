@@ -1,0 +1,38 @@
+# Ten Songs of Tagore, In Data (Swaralipi Corpus v0.1)
+
+> An openly licensed, machine-readable corpus of Rabindrasangeet (Tagore song) notation. Ten songs
+> encoded from akarmatrik swaralipi — the Bengali notation system — into a symbolic JSON format
+> that preserves swara, saptak, matra-fraction timing, taal cycles and Bengali lyric alignment.
+> To our knowledge the first such dataset to exist under an open licence.
+
+Compositions by Rabindranath Tagore (1861-1941), public domain in India since 2002.
+Data: CC BY 4.0. Code: MIT. Maintained by Indranil (Neel) Banerjee.
+
+## What is in it
+- 10 songs, 214 notated lines, 2,543 matra-cells, 3,195 note-units
+- Taals covered: ektaal (12), dadra (6), kaharba (8), tintal (16), khemta (6), plus one
+  talamukta (free-rhythm) song
+- Derived MIDI and MusicXML; reference audio synthesized from the notation itself, not recorded
+- Per-song provenance: witness archive, URL, retrieval date, confidence level
+- 3 of 10 songs verified matra-by-matra against scans of the printed Swarabitan
+
+## Key documents
+- Overview and quickstart: /README.md
+- Format design and rationale: /schema/SCHEMA.md
+- How the source notation was decoded, with evidence: /docs/DECODING.md
+- What was verified against print, and what it corrected: /docs/VERIFICATION.md
+- Dataset card (coverage, limitations, rights, prior art): /docs/DATASET_CARD.md
+- What the data makes possible, with real findings: /docs/USE_CASES.md
+- Plans and open questions: /ROADMAP.md
+- How to contribute (no programming required): /CONTRIBUTING.md
+- The AI continuation experiment: /experiment/EXPERIMENT.md
+- Listen: https://neelverse-lab.github.io/tagore-swaralipi/
+
+## Notable findings
+- পুরানো সেই দিনের কথা: 94.1% of its notes are the Bhupali pentatonic, the rest seven Ni and one
+  Ma — matching the printed raga name "Mishra (mixed) Bhupali", measured before that name was known
+- ভালোবেসে সখী is talamukta, not dadra: the printed page carries no taal header and no vibhag bars
+- Across the corpus, Pa falls on sam (beat one) nearly twice as often as Sa
+
+## Citation
+See /CITATION.cff

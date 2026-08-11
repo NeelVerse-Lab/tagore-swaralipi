@@ -48,11 +48,15 @@ and the tara-saptak marks in line 2.
 
 **What this changed:**
 
-- **We gained a raga.** The printed header reads **মিশ্র ভূপালী । একতাল**. The online witness
-  states only the taal. So the corpus now records Mishra Bhupali — a *pentatonic* raga, which is
-  a satisfying independent confirmation of two things we already believed: that this melody comes
-  from the pentatonic Scots air *Auld Lang Syne*, and that our decoding was right, since the
-  note-set our data produces is pentatonic without our ever having assumed it.
+- **We gained a raga, and it checks out numerically.** The printed header reads
+  **মিশ্র ভূপালী । একতাল**; the online witness states only the taal. Bhupali is the pentatonic
+  S R G P D, and *mishra* means *mixed*. Counting the corpus: of this song's 135 pitched notes,
+  **127 (94.1%) are that pentatonic core**, and the other eight are seven Ni — mostly a lower
+  neighbour to Sa — plus exactly one Ma. A pentatonic frame with a small admixture is what the
+  raga name literally claims, and it is what the data independently shows. Two things follow:
+  the *Auld Lang Syne* origin (a pentatonic Scots air) is visible in the numbers, and the
+  decoding is corroborated, because this distribution was produced before the raga name was
+  known to us and could not have been assumed into it.
 - **One honest doubt recorded.** Line 4, matra 5: the udara mark under the second ধা is ambiguous
   at this scan's resolution. We keep the witness reading (udara) because the surrounding phrase
   sits low, and we say so in the data rather than pretending the page was clear.

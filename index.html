@@ -39,6 +39,67 @@ blockquote{border-left:3px solid var(--accent);margin:20px 0;padding:2px 0 2px 1
 footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 @media(max-width:620px){.ab{grid-template-columns:1fr}h1 .bn{font-size:1.9rem}h1{font-size:1.6rem}}
 </style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Ten Songs of Tagore, In Data (Swaralipi Corpus)",
+  "alternateName": "দশটি গান, ডেটায়",
+  "description": "Ten Rabindrasangeet digitized from akarmatrik swaralipi into an open symbolic notation format — swara, saptak, matra-fraction timing, taal cycles, and Bengali lyric alignment — with derived MIDI and MusicXML, notation-synthesized audio, per-song provenance, and a blind AI-continuation experiment. To our knowledge the first openly licensed machine-readable corpus of Rabindrasangeet notation.",
+  "url": "https://github.com/NeelVerse-Lab/tagore-swaralipi",
+  "sameAs": "https://neelverse-lab.github.io/tagore-swaralipi/",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "version": "0.1.0",
+  "datePublished": "2026-08-11",
+  "inLanguage": [
+    "bn",
+    "en"
+  ],
+  "keywords": [
+    "Rabindrasangeet",
+    "Rabindranath Tagore",
+    "swaralipi",
+    "akarmatrik notation",
+    "symbolic music",
+    "Bengali music",
+    "music information retrieval",
+    "digital humanities",
+    "Swarabitan",
+    "Indian classical music",
+    "open data"
+  ],
+  "creator": {
+    "@type": "Person",
+    "name": "Indranil Banerjee",
+    "alternateName": "Neel",
+    "url": "https://github.com/indranilbanerjee"
+  },
+  "about": {
+    "@type": "MusicComposition",
+    "composer": {
+      "@type": "Person",
+      "name": "Rabindranath Tagore"
+    }
+  },
+  "isAccessibleForFree": true,
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://github.com/NeelVerse-Lab/tagore-swaralipi/tree/main/data/songs"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "audio/midi",
+      "contentUrl": "https://github.com/NeelVerse-Lab/tagore-swaralipi/tree/main/derived/midi"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/vnd.recordare.musicxml+xml",
+      "contentUrl": "https://github.com/NeelVerse-Lab/tagore-swaralipi/tree/main/derived/musicxml"
+    }
+  ],
+  "measurementTechnique": "Re-encoded from the SNLTR digital edition of Swarabitan; three songs additionally verified matra-by-matra against scans of the printed Swarabitan (Visva-Bharati)."
+}</script>
 </head>
 <body>
 <div class="wrap">
@@ -378,8 +439,8 @@ clips below — the only difference is the composition.</p>
   </div>
 </div>
 
-<blockquote>The model broke no rules: exact 12-matra ektaal cycles, a strictly pentatonic
-note-set, a cadence properly prepared to fall back into the sthayi. Then it did what nearly
+<blockquote>The model broke no rules: exact 12-matra ektaal cycles, a note-set that stayed
+inside the song's pentatonic frame, a cadence properly prepared to fall back into the sthayi. Then it did what nearly
 every Hindustani antara does — it leapt to the upper octave. Tagore didn't. He stays in the
 middle register and saves the one climb for three words: <em>প্রাণের মাঝে আয়</em> — come into
 my heart. The music rises where the poem rises, not where the rulebook says.</blockquote>
