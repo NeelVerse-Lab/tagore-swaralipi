@@ -1,0 +1,17 @@
+# Sponsor button for this repository.
+#
+# NOTE: an entry only renders once that platform account actually exists.
+#   - `github:` requires GitHub Sponsors to be enabled on the account
+#     (Settings → Sponsors, or https://github.com/sponsors/dashboard).
+#   - Remove or edit any line below whose account you haven't set up yet;
+#     GitHub silently ignores unknown handles but the button looks better
+#     when every listed option works.
+
+# The repo lives under the NeelVerse-Lab org, but sponsorship goes to the maintainer
+# personally — GitHub allows a FUNDING.yml to name any Sponsors-enabled account.
+github: [indranilbanerjee]
+
+# Uncomment and fill in as you set these up:
+# ko_fi: neelverse
+# buy_me_a_coffee: neelverse
+# custom: ["https://neelverse.com/support"]

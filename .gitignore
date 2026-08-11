@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+*.wav
+.venv/
+venv/
+COMMIT_MESSAGE.txt
+COMMIT_MESSAGE.txt
+sources/raw/

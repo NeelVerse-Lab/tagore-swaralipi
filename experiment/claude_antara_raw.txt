@@ -1,0 +1,9 @@
+## rationale: The antara answers the sthayi's pickup "আয়্" with an octave-leap call (D up to S') held aloft in the upper register, peaking at R' on "সুখের", all inside the song's pentatonic S R G P D world; the last line settles through G–R to an (N,)S cadence, echoing the sthayi's N, lower-neighbour so the opening "পুরানো" on S can re-enter seamlessly.
+S'  -   D   |  -   P   -   |  G   P   D   |  -  -  -
+আ   য়্   আ  |  র্   এ   ক্  |  টি  বা  র্  |  ৹  ৹  ৹
+(D)S'  -   D   |  P   G   G     |  R   -   G   |  P   D   -/S'
+আ      য়্   রে  |  স   খা  প্রা  |  ণে  র্   মা  |  ঝে  আ   য়্
+S'  S'  R'  |  S'  -   D   |  P   -   G  |  G   P   D
+মো  রা  সু  |  খে  র্   দু  |  খে  র্   ক  |  থা  ক   ব
+D     -   P   |  G   R   -  |  G   -   -/R  |  (N,)S  -  -
+প্রা  ণ্   জু  |  ড়া  বে  ৹  |  তা  য়্   ৹    |  ৹      ৹  ৹

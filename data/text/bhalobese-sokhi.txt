@@ -1,0 +1,56 @@
+# ভালোবেসে সখী, নিভৃত যতনে  (Bhalobese sokhi, nibhrite jotone)
+# taal: talamukta (free rhythm)
+
+[sthayi]
+S   G   R   G   G  G   R   G/M/P  M   G  M  G/M/G
+ভা  লো  বে  সে  স  খী  নি  ভৃ৹৹   তে  য  ত  নে৹৹ 
+R  R   -   R   -   G/M  G   R/G  -/S  S   S   -/R
+আ  মা  র্  না  ম্  টি৹  লি  খো৹  ৹    তো  মা  র্ 
+R  G   G/M  R/G  -/M/P  M   G   -  -  -  -/G/R  -/S/N,
+ম  নে  র৹   ম৹   ৹ন্    দি  রে  ৹  ৹  ৹  ৹      ৹     
+G  G/P  P   P  P   P/G  G   P   -   D   N   D/P
+আ  মা৹  র্  প  রা  নে৹  যে  গা  ন্  বা  জি  ছে৹
+P   P   -/D  P   -   D   P   P/D/N  -/D/P  P/D  P   -/M
+তা  হা  র্   তা  ল্  টি  শি  খো৹৹   ৹      তো৹  মা  র্ 
+G  G  M  R/G  -/M/P  M   G   -  -  -  -/G/R  -/S/N,
+চ  র  ণ  ম৹   ৹ন্    জী  রে  ৹  ৹  ৹  ৹      ৹     
+
+[antara]
+P  D   S'  S'  S'  S'  S'  S'/G'  R'  S'  N  D/n
+ধ  রি  য়া  রা  খি  য়ো  সো  হা৹    গে  আ   দ  রে৹
+D  P   -   P   P  d  P   P/d  -/n  d   P   - 
+আ  মা  র্  মু  খ  র  পা  খি৹  ৹    তো  মা  র্
+P     P   d  P/d    -/n  d  P   -  -  -  -  -
+প্রা  সা  দ  প্রা৹  ঙ্   গ  ণে  ৹  ৹  ৹  ৹  ৹
+P  D   D/S'  S'  S'/R'  S'  N    S'  N   D   n   D/n
+ম  নে  ক৹    রে  স৹     খী  বাঁ  ধি  য়া  রা  খি  য়ো৹
+D  P   -   P   P   d  P   P/d/n  -/d/P  P/D  P   -/M/G
+আ  মা  র্  হা  তে  র  রা  খী৹৹   ৹      তো৹  মা  ৹র্  
+G  G  M  R/G  -/M/P  M  G   -  -  -  -/G/R  -/S/N,
+ক  ন  ক  ব৹   ৹ঙ্    ক  ণে  ৹  ৹  ৹  ৹      ৹     
+
+[sanchari]
+S  G   R  R/M  G   -   R/G  -/M/P  M   G   M   -/G/R
+আ  মা  র  ল৹   তা  র্  এ৹   ৹ক্    টি  মু  কু  ৹ল্  
+R   R   R   R   R   R/M   G   R/G  -/S  S   S   -/R
+ভু  লি  য়া  তু  লি  ‎য়া৹  রে  খো৹  ৹    তো  মা  র্ 
+R  G  G  R/G  -/M/P  M  G   -  -  -  -  -
+অ  ল  ক  ব৹   ৹ন্    ধ  নে  ৹  ৹  ৹  ৹  ৹
+G  G/P  P  P    P  P/G  G   P  M/P  -/D/N  N   D/P
+আ  মা৹  র  স্ম  র  ণ৹   শু  ভ  সি৹  ৹ন্    দূ  রে৹
+P  -   D   P   -   D   P  (P)D/N  -/D/P  P/D  P   -/M/G
+এ  ক্  টি  বি  ন্  দু  এ  কো৹     ৹      তো৹  মা  ৹র্  
+G  G   M  R/G  -/M/P  M  G   -  -  -  -  -
+ল  লা  ট  চ৹   ৹ন্    দ  নে  ৹  ৹  ৹  ৹  ৹
+P  D   S'  S'  S'  S'  S'  S'/G'  R'  S'  N   D/n
+আ  মা  র   ম   নে  র   মো  হে৹    র   মা  ধু  রী৹
+n   D   D   P   P   d   P   P/d/n  -/d/P  P   P   -/d
+মা  খি  য়া  রা  খি  য়া  দি  য়ো৹৹   ৹      তো  মা  র্ 
+P  -   d  P/d  -/n  d  P   -  -  -  -  -
+অ  ঙ্  গ  সো৹  উ    র  ভে  ৹  ৹  ৹  ৹  ৹
+P  D   S'  S'  S'/R'  S'  N   S'  N  D  n  D/n
+আ  মা  র   আ   কু৹    ল   জী  ব   ন  ম  র  ণ৹ 
+D   P   P   P   P   d   P   P/d/n  -/d/P  P/D  P   -/M/G
+টু  টি  য়া  লু  টি  য়া  নি  য়ো৹৹   ৹      তো৹  মা  ৹র্  
+G  G   M  R/G  -/M/P  M  G   -  -  -  -/G/R  -/S/N,
+অ  তু  ল  গো৹  ৹উ     র  বে  ৹  ৹  ৹  ৹      ৹     

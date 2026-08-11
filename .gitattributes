@@ -1,0 +1,19 @@
+# Canonical data and notation are text; keep diffs readable and line endings stable.
+*.json    text eol=lf
+*.md      text eol=lf
+*.py      text eol=lf
+*.yml     text eol=lf
+*.txt     text eol=lf diff
+*.musicxml text eol=lf
+*.cff     text eol=lf
+
+# Binary artefacts
+*.mid     binary
+*.mp3     binary
+*.ttf     binary
+
+# Keep generated/derived material out of language statistics
+derived/*   linguist-generated=true
+audio/*     linguist-generated=true
+sources/*   linguist-vendored=true
+data/text/* linguist-language=Text

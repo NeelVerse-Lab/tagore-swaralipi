@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/neelverse/tagore-swaralipi/schema/swaralipi.schema.json",
+  "title": "Swaralipi-JSON song",
+  "type": "object",
+  "required": ["schema_version", "id", "title", "composer", "taal", "lines", "provenance", "confidence"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": {
+      "type": "object",
+      "required": ["bn", "translit"],
+      "properties": { "bn": { "type": "string" }, "translit": { "type": "string" } }
+    },
+    "composer": { "const": "Rabindranath Tagore" },
+    "parjaay": {
+      "type": ["object", "null"],
+      "properties": { "bn": { "type": "string" }, "en": { "type": "string" } }
+    },
+    "raga_anga": { "type": ["string", "null"], "description": "Raga/anga association by tradition (informational; not stated in the primary witness)" },
+    "taal": {
+      "type": "object",
+      "required": ["name", "talamukta"],
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": { "bn": { "type": "string" }, "translit": { "type": "string" } }
+        },
+        "matras": { "type": ["integer", "null"], "minimum": 1 },
+        "vibhags": { "type": ["array", "null"], "items": { "type": "integer", "minimum": 1 } },
+        "beats": { "type": ["array", "null"], "items": { "enum": ["sam", "taali", "khali"] } },
+        "talamukta": { "type": "boolean" }
+      }
+    },
+    "sections": { "type": "array", "items": { "type": "string" } },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/line" }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["primary_witness", "encoding_method"],
+      "properties": {
+        "primary_witness": {
+          "type": "object",
+          "required": ["archive", "url", "retrieved"],
+          "properties": {
+            "archive": { "type": "string" },
+            "url": { "type": "string" },
+            "retrieved": { "type": "string", "format": "date" },
+            "taal_as_stated": { "type": "string" }
+          }
+        },
+        "secondary_witnesses": { "type": "array" },
+        "encoding_method": { "type": "string" },
+        "known_deviations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["level"],
+      "properties": {
+        "level": { "enum": ["high", "medium", "low"] },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "swara": {
+      "type": "object",
+      "required": ["degree", "saptak"],
+      "properties": {
+        "degree": { "enum": ["S", "R", "G", "M", "P", "D", "N"] },
+        "komal": { "type": "boolean", "default": false },
+        "kori": { "type": "boolean", "default": false },
+        "saptak": { "type": "integer", "minimum": -1, "maximum": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "required": ["komal"], "properties": { "komal": { "const": true } } },
+          "then": { "properties": { "degree": { "enum": ["R", "G", "D", "N"] } } }
+        },
+        {
+          "if": { "required": ["kori"], "properties": { "kori": { "const": true } } },
+          "then": { "properties": { "degree": { "const": "M" } } }
+        }
+      ]
+    },
+    "unit": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["swara", "sustain", "rest"] },
+        "swara": { "$ref": "#/$defs/swara" },
+        "kan": { "type": "array", "items": { "$ref": "#/$defs/swara" } },
+        "uncertain": { "type": "boolean" }
+      },
+      "if": { "properties": { "type": { "const": "swara" } } },
+      "then": { "required": ["type", "swara"] }
+    },
+    "cell": {
+      "type": "object",
+      "required": ["units"],
+      "properties": {
+        "units": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/unit" } },
+        "lyric": { "type": ["string", "null"] },
+        "melisma": { "type": "boolean" }
+      }
+    },
+    "line": {
+      "type": "object",
+      "required": ["line_no", "section", "cells"],
+      "properties": {
+        "line_no": { "type": "integer", "minimum": 1 },
+        "section": { "type": "string" },
+        "cells": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/cell" } },
+        "anacrusis": { "type": "boolean" },
+        "marks": { "type": "array" }
+      }
+    }
+  }
+}

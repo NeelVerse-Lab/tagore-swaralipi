@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "Ten Songs of Tagore, In Data (Swaralipi Corpus v0.1)"
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - family-names: Banerjee
+    given-names: Indranil
+    alias: Neel
+version: 0.1.0
+date-released: 2026-08-11
+license: CC-BY-4.0
+repository-code: "https://github.com/NeelVerse-Lab/tagore-swaralipi"
+url: "https://github.com/NeelVerse-Lab/tagore-swaralipi"
+abstract: >
+  A micro-dataset of ten Rabindrasangeet digitized from akarmatrik swaralipi
+  into a machine-readable symbolic JSON schema (swara, saptak, matra fractions,
+  taal cycles, Bengali lyric alignment, provenance), with derived MIDI/MusicXML,
+  notation-synthesized audio, and a blind AI-continuation experiment.
+keywords: [Rabindrasangeet, Tagore, swaralipi, symbolic music, digital humanities, Bengali, music information retrieval]

@@ -1,0 +1,67 @@
+name: 🎵 Add a song
+description: Propose a Rabindrasangeet for the corpus — with or without the notation in hand.
+title: "[song] "
+labels: ["new-song"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The corpus grows carefully: we'd rather have 20 songs that are right than 200 that are
+        approximately right. You can file this with full notation, or just to nominate a song and
+        say why it matters.
+
+  - type: input
+    id: title
+    attributes:
+      label: Song title
+      placeholder: "আলো আমার, আলো ওগো"
+    validations:
+      required: true
+
+  - type: input
+    id: taal
+    attributes:
+      label: Taal
+      placeholder: "দাদরা / dadra"
+
+  - type: input
+    id: parjaay
+    attributes:
+      label: Parjaay (and raga-anga, if the tradition assigns one)
+      placeholder: "পূজা · Behag-anga"
+
+  - type: dropdown
+    id: have_notation
+    attributes:
+      label: Do you have the notation?
+      options:
+        - Yes — I can transcribe it (or have pasted it below)
+        - Yes — I have the Swarabitan page but need help transcribing
+        - "No — I'm nominating this song and hoping someone has it"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notation
+    attributes:
+      label: Notation
+      description: |
+        In our sargam-text format if you can (see [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md)),
+        or however you have it. Leave blank if you're only nominating.
+      render: text
+
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Swarabitan volume/page, or the archive you'd use. Required if you're supplying notation.
+      placeholder: "Swarabitan vol. 25"
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this song?
+      description: |
+        Especially useful if it fills a structural gap — an unusual taal, a raga not yet represented,
+        a bhanga gaan, a talamukta song, or a parjaay we're missing. That's how the corpus stays a
+        *sample of the tradition* rather than a list of favourites.

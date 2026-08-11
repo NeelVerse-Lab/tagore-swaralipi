@@ -1,0 +1,35 @@
+name: 🐛 Bug or tooling issue
+description: Something in the code, schema, converters, or audio doesn't work.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part?
+      options:
+        - Schema / JSON validation
+        - Parser (tools/parse_nltr.py, tools/parse_text.py)
+        - MIDI or MusicXML conversion
+        - Audio synthesis
+        - Text rendering
+        - Tests / CI
+        - Documentation
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you ran, what you expected, what you got.
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Python 3.11, macOS 14"

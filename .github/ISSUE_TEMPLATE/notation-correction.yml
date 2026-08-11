@@ -1,0 +1,112 @@
+name: 🎼 Notation correction
+description: You read the swaralipi and something in our data is wrong. The most valuable issue you can file.
+title: "[correction] "
+labels: ["correction", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you — this is the contribution this project needs most.
+
+        You don't need to know how to code. Just tell us what the book says and what we got wrong.
+        If a correction changes the data, **you'll be credited by name in that song's provenance**
+        (say so below if you'd rather not be).
+
+  - type: input
+    id: song
+    attributes:
+      label: Which song?
+      description: Bengali title or the file name from `data/songs/`
+      placeholder: "পুরানো সেই দিনের কথা  /  purano-sei-diner-katha"
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Where in the song?
+      description: Line number from `data/text/<song>.txt`, and the matra/cell if you can pinpoint it. The lyric syllable works too.
+      placeholder: "Line 4, cells 5–6 — under 'ভোলা'"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What our data currently has
+      description: Copy the row from `data/text/<song>.txt`, or just describe it.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct
+    attributes:
+      label: What the notation actually says
+      description: |
+        The correct reading. Use our sargam-text notation if convenient
+        (`S R G M P D N`, lowercase = komal, `M#` = kori Ma, `'` = tara, `,` = udara,
+        `-` = sustain, `/` = split matra) — but plain description in Bengali or English is
+        completely fine. Say it however it's natural for you.
+      render: text
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of error is it?
+      multiple: true
+      options:
+        - Wrong swara (note)
+        - Wrong saptak (octave)
+        - Komal / kori marking wrong or missing
+        - Matra count / rhythm wrong
+        - Lyric aligned under the wrong note
+        - Missing meend, kan (grace note), or ornament
+        - Section boundary (sthayi / antara / sanchari / abhog) wrong
+        - Taal or metadata wrong
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Your source
+      description: |
+        **Required.** Which edition are you reading? Swarabitan volume and page number if you have
+        it; or the archive/app/teacher's copy you're working from. A photo of the page is ideal —
+        drag it in here — but not required.
+      placeholder: "Swarabitan vol. 32, p. 14 (Visva-Bharati, 1963 edition)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: How sure are you?
+      description: Honest uncertainty is recorded in the data, not held against you.
+      options:
+        - Certain — I'm reading the printed page right now
+        - Fairly sure — from a reliable copy or long familiarity
+        - Worth checking — something looks off but I'd like another opinion
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: |
+        Context we'd miss — a known variant between editions, a performance tradition that differs
+        from the page, a reason two sources disagree. This kind of knowledge is exactly what a
+        dataset can't get from scanning.
+
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Please **don't** credit me by name if this correction is merged.
+          required: false
